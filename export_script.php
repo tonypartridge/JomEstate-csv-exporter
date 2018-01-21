@@ -1,4 +1,5 @@
 <?php
+
 // RUN within side a components view for instance. 
 
 //error_reporting(E_ALL);
@@ -119,33 +120,6 @@ function getPrice($propId) {
 
 	// Load the results as a list of stdClass objects (see later for more options on retrieving data).
 	return $db->loadObject();
-}
-
-function getHomeReport($propId) {
-	// Set DB Connections
-	$db = JFactory::getDbo();
-	$query = $db->getQuery(true);
-	$query->select('value_string');
-	$query->from($db->quoteName('#__cddir_content_has_fields'));
-	$query->where($db->quoteName('content_id') . ' = ' . $propId);
-	$query->where($db->quoteName('fields_id') . ' = 7');
-
-	// Reset the query using our newly populated query object.
-	$db->setQuery($query);
-
-	// Load the results as a list of stdClass objects (see later for more options on retrieving data).
-	$result = $db->loadObject();
-
-	$homeReport = $result->value_string;
-	$hrLink = '';
-
-	if (strlen($homeReport) > 5)
-	{
-		$url  = preg_match('/href=["\']?([^"\'>]+)["\']?/', $homeReport, $match);
-		$hrLink = $match[1];
-	}
-
-	return $hrLink;
 }
 
 function getCategories() {
