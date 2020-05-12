@@ -85,7 +85,7 @@ foreach ($results AS $pkey => $prop) {
 	$images = '';
 	$rr = 0;
 	foreach( getImages($pkey) as $image) {
-		$images .= 'https://www.andersonbain.co.uk/components/com_jomcomdev/images/' . $image['path'] . '/' . $image['name'];
+		$images .= 'https://www.website.co.uk/components/com_jomcomdev/images/' . $image['path'] . '/' . $image['name'];
 
 		if ($gotImagescount !== $rr) {
 			$images .= '|';
